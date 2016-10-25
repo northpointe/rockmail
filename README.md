@@ -1,6 +1,4 @@
-# Foundation for Emails Template
-
-[![devDependency Status](https://david-dm.org/zurb/foundation-emails-template/dev-status.svg)](https://david-dm.org/zurb/foundation-emails-template#info=devDependencies)
+# NorthPointe Community Church Foundation for Emails Template
 
 **Please open all issues with this template on the main [Foundation for Emails](http://github.com/zurb/foundation-emails/issues) repo.**
 
@@ -56,7 +54,7 @@ Run `npm run build` to inline your CSS into your HTML along with the rest of the
 
 Run `npm run litmus` to build as above, then submit to litmus for testing. *AWS S3 Account details required (config.json)*
 
-Run `npm run zip` to build as above, then zip HTML and images for easy deployment to email marketing services. 
+Run `npm run zip` to build as above, then zip HTML and images for easy deployment to email marketing services.
 
 ## Litmus Tests (config.json)
 
@@ -85,5 +83,3 @@ Testing in Litmus requires the images to be hosted publicly. The provided gulp t
 For a full list of Litmus' supported test clients(applications) see their [client list](https://litmus.com/emails/clients.xml).
 
 **Caution:** AWS Service Fees will result, however, are usually very low do to minimal traffic. Use at your own discretion.
-
-
