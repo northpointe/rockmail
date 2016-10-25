@@ -1,0 +1,24 @@
+<span class="preheader">Welcome to your \{{ 'Global' | Attribute:'OrganizationName' }} Account</span>
+
+<container class="radius">
+  {{> nplogo }}
+  <row>
+    <columns class="inner">
+<h2>New \{{ RegistrationInstance.RegistrationTemplate.RegistrantTerm | PluralizeForQuantity:registrantCount | Downcase }}</h2>
+  <p>
+      The following \{{ RegistrationInstance.RegistrationTemplate.RegistrantTerm | PluralizeForQuantity:registrantCount | Downcase }} just registered
+      for \{{ RegistrationInstance.Name }}{% if Registration.Group %} and have been added to the \{{ Registration.Group.Name }} Group{% endif %}.
+  </p>
+
+  <ul>
+  {% for registrant in Registration.Registrants %}
+      <li>\{{ registrant.PersonAlias.Person.FullName }}</li>
+  {% endfor %}
+  </ul>
+
+    </columns>
+  </row>
+<spacer size="23"></spacer>
+</container>
+
+{{> footer }}

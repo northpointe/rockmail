@@ -1,0 +1,27 @@
+<table style="background:white;border:1px solid #dddddd;border-radius: 5px;border-spacing:0;margin:0;padding:20px 0;table-layout:fixed;text-align:center;width:100%;border-collapse: separate;">
+    <tbody><tr>
+        <th style="border-right:1px solid #dddddd;padding:10px 30px;text-align:left;width:50%">Recipient</th>
+        <td style="margin:0;padding:10px 30px;text-align:left;width:50%">NorthPointe Community Church</td>
+    </tr>
+    <tr>
+        <th style="border-right:1px solid #dddddd;padding:10px 30px;text-align:left;width:50%">Amount</th>
+        <td style="margin:0;padding:10px 30px;text-align:left;width:50%">\{{ 'Global' | Attribute:'CurrencySymbol' }} \{{ TotalAmount | Format:'#,##0.00' }}</td>
+    </tr>
+	<tr>
+		<th style="border-right:1px solid #dddddd;padding:10px 30px;text-align:left;width:50%">Date</th>
+		<td style="margin:0;padding:10px 30px;text-align:left;width:50%">{date_mdy}</td>
+	</tr>
+    <tr>
+        <th style="border-right:1px solid #dddddd;padding:10px 30px;text-align:left;width:50%">Transaction No.</th>
+        <td style="margin:0;padding:10px 30px;text-align:left;width:50%">\{{ TransactionCode }}</td>
+    </tr>
+
+    <tr>
+        <th style="border-right:1px solid #dddddd;padding:10px 30px;text-align:left;width:50%">Funds</th>
+        <td style="margin:0;padding:10px 30px;text-align:left;width:50%">
+            {% for amount in Amounts %}
+        <strong>\{{ amount.AccountName }}</strong> \{{ 'Global' | Attribute:'CurrencySymbol' }}\{{ amount.Amount | Format:'#,##0.00' }}<br>
+            {% endfor %}
+    </tr>
+</tbody>
+</table>

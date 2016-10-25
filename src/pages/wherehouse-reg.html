@@ -1,0 +1,77 @@
+<span class="preheader">Hi \{{ Person.NickName }}, send us your Wherehouse small group attendance.</span>
+
+<container class="radius">
+  {{> whlogo }}
+  <row>
+    <columns class="inner">
+      {% capture currencySymbol %}\{{ 'Global' | Attribute:'CurrencySymbol' }}{% endcapture %}
+      {% assign registrantCount = Registration.Registrants | Size %}
+
+      <h2>\{{ RegistrationInstance.RegistrationTemplate.RegistrationTerm }} Confirmation for \{{ RegistrationInstance.Name }}</h2>
+
+      <p>
+          The following \{{ RegistrationInstance.RegistrationTemplate.RegistrantTerm | PluralizeForQuantity:registrantCount | Downcase }}
+          {% if registrantCount > 1 %}have{% else %}has{% endif %} been registered for \{{ RegistrationInstance.Name }}:
+      </p>
+
+      <ul>
+      {% for registrant in Registration.Registrants %}
+          <li>
+              <strong class="emp">\{{ registrant.PersonAlias.Person.FullName }}</strong>
+
+              {% if registrant.Cost > 0 %}
+                  - \{{ currencySymbol }}\{{ registrant.Cost | Format:'#,##0.00' }}
+              {% endif %}
+
+              {% assign feeCount = registrant.Fees | Size %}
+              {% if feeCount > 0 %}
+                  <br/>\{{ RegistrationInstance.RegistrationTemplate.FeeTerm | PluralizeForQuantity:registrantCount }}:
+                  <ul>
+                  {% for fee in registrant.Fees %}
+                      <li>
+                          \{{ fee.RegistrationTemplateFee.Name }} \{{ fee.Option }}
+                          {% if fee.Quantity > 1 %} (\{{ fee.Quantity }} @ \{{ currencySymbol }}\{{ fee.Cost | Format:'#,##0.00' }}){% endif %}: \{{ currencySymbol }}\{{ fee.TotalCost | Format:'#,##0.00' }}
+                      </li>
+                  {% endfor %}
+                  </ul>
+              {% endif %}
+
+          </li>
+      {% endfor %}
+      </ul>
+
+      {% if Registration.TotalCost > 0 %}
+      <p>
+          Total Cost: \{{ currencySymbol }}\{{ Registration.TotalCost | Format:'#,##0.00' }}<br/>
+          {% if Registration.DiscountedCost != Registration.TotalCost %}
+              Discounted Cost: \{{ currencySymbol }}\{{ Registration.DiscountedCost | Format:'#,##0.00' }}<br/>
+          {% endif %}
+          {% for payment in Registration.Payments %}
+              Paid \{{ currencySymbol }}\{{ payment.Amount | Format:'#,##0.00' }} on \{{ payment.Transaction.TransactionDateTime| Date:'M/d/yyyy' }}
+              <small>(Acct #: \{{ payment.Transaction.FinancialPaymentDetail.AccountNumberMasked }}, Ref #: \{{ payment.Transaction.TransactionCode }})</small><br/>
+          {% endfor %}
+
+          {% assign paymentCount = Registration.Payments | Size %}
+
+          {% if paymentCount > 1 %}
+              Total Paid: \{{ currencySymbol }}\{{ Registration.TotalPaid | Format:'#,##0.00' }}<br/>
+          {% endif %}
+
+          Balance Due: \{{ currencySymbol }}\{{ Registration.BalanceDue | Format:'#,##0.00' }}
+      </p>
+      {% endif %}
+
+      <p>
+          \{{ RegistrationInstance.AdditionalConfirmationDetails }}
+      </p>
+
+      <p>
+          If you have any questions please contact \{{ RegistrationInstance.ContactPersonAlias.Person.FullName }} at \{{ RegistrationInstance.ContactEmail }}.
+      </p>
+
+    </columns>
+  </row>
+
+</container>
+
+{{> footer }}

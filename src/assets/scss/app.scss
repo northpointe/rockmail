@@ -1,0 +1,87 @@
+@import 'settings';
+@import 'foundation-emails';
+
+a{
+  &.float-right{float:right;}
+  &.quiet{
+    color:$medium-gray;
+    &:hover{
+      color:$primary-color;
+    }
+  }
+}
+
+h1{
+  small{
+    color:$black;
+    font-size:70%;
+    font-weight:400;
+  }
+
+  &.massive{
+    font-size:60px;
+    line-height: 1.1;
+    margin-bottom: 39px;
+    small{
+      color:$black;
+      font-size:40%;
+      font-weight:400;
+    }
+  }
+}
+
+table.row.whlogo {
+  border-bottom:1px solid #dee7eb;
+
+  .columns{
+    padding-left:29px;
+    padding-right:29px;
+    padding-bottom:0;
+  }
+}
+
+table.row.logo {
+  border-bottom:1px solid #dee7eb;
+
+  .columns{
+    padding-bottom:0;
+  }
+}
+
+th.inner{
+  padding:30px 0 20px;
+}
+
+table.container.preheader {
+  th {
+    padding-left: 0;
+    padding-right: 0;
+    padding-bottom:0;
+  }
+}
+
+table.container.radius {
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  border: 1px solid #c7d0d4;
+  margin-top:15px;
+  margin-bottom:15px;
+}
+
+table.row.innerfooter{
+  .grab th{
+      padding-top: 35px;
+      padding-bottom: 35px;
+      border-top: 1px solid #E7EBEE;
+  }
+}
+
+img.np-logo{
+  width: 40px !important;
+  margin-top:10px;
+  margin-bottom:20px;
+}
+
+.emp{
+  color:$button-background;
+  font-weight:600;
+}

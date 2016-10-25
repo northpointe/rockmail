@@ -1,0 +1,27 @@
+<span class="preheader">Its time to take attendance</span>
+
+<container class="radius">
+  {{> nplogo }}
+  <row>
+    <columns class="inner">
+      <h3>Hey \{{ Person.NickName }},</h3>
+      <p>Please remember to enter attendance for your group meeting {% if today == occurrenceDate %}today{% else %}on \{{ Occurrence | Date:'dddd' }}{% endif %}.</p>
+
+      <spacer size="16"></spacer>
+<center>
+      <button class="rounded large" href="#">Reset Password</button>
+</center>
+<spacer size="16"></spacer>
+
+    </columns>
+  </row>
+
+<row class="innerfooter">
+<columns class="grab">
+<a href="https://sentry.io" class="float-right">Home</a>
+<a href="https://sentry.io/account/settings/notifications/">Notification Settings</a>
+</columns>
+  </row>
+</container>
+
+{{> footer }}
