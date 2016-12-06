@@ -1,0 +1,41 @@
+<span class="preheader">Payment reminder for {% for registrant in Registration.Registrants %}{{ registrant.PersonAlias.Person.FullName }} {% endfor %}</span>
+
+<container class="radius">
+  {{> whlogo }}
+  <row>
+    <columns class="inner">
+      {% capture currencySymbol %}\{{ 'Global' | Attribute:'CurrencySymbol' }}{% endcapture %}
+      {% capture externalSite %}\{{ 'Global' | Attribute:'PublicApplicationRoot' }}{% endcapture %}
+      {% assign registrantCount = Registration.Registrants | Size %}
+
+      <h2>\{{ RegistrationInstance.RegistrationTemplate.RegistrationTerm }} Payment Reminder</h2>
+
+      <p>
+          This \{{ RegistrationInstance.RegistrationTemplate.RegistrationTerm | Downcase  }} for \{{ RegistrationInstance.Name }} has a remaining balance
+          of \{{ currencySymbol }}\{{ Registration.BalanceDue | Format:'#,##0.00' }}. The
+          \{{ RegistrationInstance.RegistrationTemplate.RegistrantTerm | Downcase | Pluralize  }} for this
+          \{{ RegistrationInstance.RegistrationTemplate.RegistrationTerm }} are below.
+      </p>
+
+      <ul>
+      {% for registrant in Registration.Registrants %}
+          <li>\{{ registrant.PersonAlias.Person.FullName }}</li>
+      {% endfor %}
+      </ul>
+
+      <p>
+          You can complete the payment for this \{{ RegistrationInstance.RegistrationTemplate.RegistrationTerm | Downcase }}
+          using our <a class="emp" href='\{{ externalSite }}/Registration?RegistrationId=\{{ Registration.Id }}&rckipid=\{{ Registration.PersonAlias.Person.UrlEncodedKey }}'>
+          online registration page</a>.
+      </p>
+
+      <p>
+          If you have any questions please contact \{{ RegistrationInstance.ContactName }} at \{{ RegistrationInstance.ContactEmail }}.
+      </p>
+
+    </columns>
+  </row>
+
+</container>
+
+{{> footer }}
