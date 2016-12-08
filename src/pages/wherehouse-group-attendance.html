@@ -1,3 +1,8 @@
+{% capture today %}\{{ 'Now' | Date:'yyyyMMdd' }}{% endcapture %}
+{% capture occurrenceDate %}\{{ Occurrence | Date:'yyyyMMdd' }}{% endcapture %}
+{% capture attendanceLink %}\{{ 'Global' | Attribute:'PublicApplicationRoot' }}page/368?\{{ Person.ImpersonationParameter }}&GroupId=\{{ Group.Id }}&Occurrence=\{{ Occurrence | Date:'yyyy-MM-ddTHH\%3amm\%3ass' }}{% endcapture %}
+
+
 <span class="preheader">Hi \{{ Person.NickName }}, send us your Wherehouse small group attendance.</span>
 
 <container class="radius">
