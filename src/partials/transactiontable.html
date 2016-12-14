@@ -20,7 +20,7 @@
         <th style="border-right:1px solid #dddddd;padding:10px 30px;text-align:left;width:50%">Funds</th>
         <td style="margin:0;padding:10px 30px;text-align:left;width:50%">
             {% for amount in Amounts %}
-        <strong>\{{ amount.AccountName }}</strong> \{{ 'Global' | Attribute:'CurrencySymbol' }}\{{ amount.Amount | Format:'#,##0.00' }}<br>
+        <strong>\{{ amount.AccountName }}</strong> \{{ 'Global' | Attribute:'CurrencySymbol' }}\{{ amount.Amount | Format:'#,##0.00' }}<br/>
             {% endfor %}
     </tr>
 </tbody>
