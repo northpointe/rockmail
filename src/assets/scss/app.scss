@@ -1,5 +1,41 @@
 @import 'settings';
 @import 'foundation-emails';
+@import 'fonts';
+
+img.logo-img{
+  max-width:70%;
+}
+
+th.inner{
+  padding:30px 0 20px 0;
+}
+
+table.radius .inner,
+table.logo .columns{
+  padding-left: 49px;
+  padding-right: 49px;
+  @media only screen and (max-width: #{$global-breakpoint}) {
+      padding-left: $global-gutter !important;
+      padding-right: $global-gutter !important;
+  }
+}
+
+table.radius .inner{
+  @media only screen and (max-width: #{$global-breakpoint}) {
+      padding-top: $global-gutter !important;
+  }
+}
+
+
+
+
+table.footer{
+  background:none;
+  p{
+    margin-bottom: 0;
+    Margin-bottom: 0;
+  }
+}
 
 a{
   &.float-right{float:right;}
@@ -22,6 +58,12 @@ h1{
     font-size:60px;
     line-height: 1.1;
     margin-bottom: 39px;
+    white-space: nowrap;
+    @media only screen and (max-width: #{$global-breakpoint}) {
+      font-size:40px !important;
+      white-space: normal !important;
+      margin-bottom: $header-margin-bottom !important;
+    }
     small{
       color:$black;
       font-size:40%;
@@ -48,9 +90,7 @@ table.row.logo {
   }
 }
 
-th.inner{
-  padding:30px 0 20px;
-}
+
 
 table.container.preheader {
   th {
@@ -67,7 +107,7 @@ table.container.radius {
   margin-bottom:15px;
 }
 
-table.row.innerfooter{
+table.row.inner{
   .grab th{
       padding-top: 35px;
       padding-bottom: 35px;
@@ -77,11 +117,11 @@ table.row.innerfooter{
 
 img.np-logo{
   width: 40px !important;
-  margin-top:10px;
-  margin-bottom:20px;
 }
 
 .emp{
   color:$button-background;
   font-weight:600;
 }
+
+@import 'hacks';

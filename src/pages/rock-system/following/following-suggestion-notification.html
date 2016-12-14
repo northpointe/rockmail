@@ -1,0 +1,34 @@
+---
+subject: Following Suggestions
+---
+
+<span class="preheader">Data update for \{{ FirstName }} \{{ LastName }}</span>
+
+<container class="radius">
+  {{> nplogo }}
+  <row>
+    <columns class="inner">
+
+      <p>
+          \{{ Person.NickName }},
+      </p>
+
+      <p>
+          Listed below are some suggestions for you to review. You can choose <a href="\{{ 'Global' | Attribute:'PublicApplicationRoot' }}FollowingSuggestionList">to follow</a> (or ignore) any of these suggestions from your Rock dashboard.
+      </p>
+
+      {% for suggestion in Suggestions %}
+          <h4>\{{ suggestion.SuggestionType.Name }}</h4>
+          <table cellpadding="25">
+          {% for notice in suggestion.Notices %}
+              \{{ notice }}
+          {% endfor %}
+          </table>
+      {% endfor %}
+
+</columns>
+</row>
+<spacer size="23"></spacer>
+</container>
+
+{{> footer }}

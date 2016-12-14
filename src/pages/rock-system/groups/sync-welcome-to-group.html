@@ -1,0 +1,38 @@
+---
+subject: Added To {{ Group.Name }}
+---
+
+<container class="radius">
+{{> nplogo }}
+<row>
+<columns class="inner">
+<p>
+    \{{ Person.NickName }}, you have been added to the \{{ Group.GroupType.GroupTerm }}: <em>\{{ Group.Name }}</em>.
+
+{% if CreateLogin == true %}
+    {% if NewPassword == '' %}
+        You can use your \{{ 'Global' | Attribute:'OrganizationName' }} login to access this \{{ Group.GroupType.GroupTerm }}. If
+        you have forgotten your password you can use the password reminder feature of our website. Your username is provided below:
+        </p>
+
+        <p>
+            <strong>Username:</strong> \{{ Person.Users[0].UserName }}
+        </p>
+    {% else %}
+        A user account has been created for you to access this group information. The details of this account can be found below.
+
+        </p>
+
+        <p>
+            <strong>Username:</strong> \{{ Person.Users[0].UserName }} <br />
+            <strong>Password:</strong> \{{ NewPassword }}
+        </p>
+    {% endif %}
+{% endif %}
+
+</columns>
+</row>
+<spacer size="23"></spacer>
+</container>
+
+{{> footer }}

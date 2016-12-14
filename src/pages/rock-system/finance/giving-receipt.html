@@ -1,10 +1,14 @@
-<span class="preheader">Welcome to your \{{ 'Global' | Attribute:'OrganizationName' }} Account</span>
+---
+subject: Giving Receipt from {{ GlobalAttribute.OrganizationName}}
+---
+
+<span class="preheader">Thank you for your gift of \{{ 'Global' | Attribute:'CurrencySymbol' }}\{{ amount.Amount | Format:'#,##0.00' }} to \{{ 'Global' | Attribute:'OrganizationName' }}</span>
 
 <container class="radius">
   {{> nplogo }}
   <row>
     <columns class="inner">
-      <h2>Gift of \{{ 'Global' | Attribute:'CurrencySymbol' }}\{{ amount.Amount | Format:'#,##0.00' }} to NorthPointe Community Church successful (#\{{ TransactionCode }})</h2>
+      <h2>Gift of \{{ 'Global' | Attribute:'CurrencySymbol' }}\{{ amount.Amount | Format:'#,##0.00' }} to \{{ 'Global' | Attribute:'OrganizationName' }} successful (#\{{ TransactionCode }})</h2>
       <p>\{{ FirstNames }},</p>
 
       <p>Thank you for your financial contribution to NorthPointe! We’re grateful that you have chosen to practice the spiritual habit of Giving Back to God. In Proverbs 3:9, the Bible says we should “honor the Lord by giving him from the first of our income,” and that’s just what you’re doing! Thanks again for your giving to the Lord that helps provide the resources for his work here at NorthPointe!</p>
@@ -18,7 +22,7 @@ If you need help with anything, or would like to send us your feedback, please c
 <spacer size="23"></spacer>
 <p>
 Thank You,<br>
-NorthPointe Community Church
+\{{ 'Global' | Attribute:'OrganizationName' }}
 </p>
     </columns>
   </row>

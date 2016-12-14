@@ -1,0 +1,11 @@
+
+@media screen {
+a[href^="x-apple-data-detectors"] {
+        color: inherit !important;
+        text-decoration: none !important;
+        pointer-events: none !important; }
+
+* [data-term] {
+  border-bottom: none !important;
+  pointer-events: none !important; }
+}

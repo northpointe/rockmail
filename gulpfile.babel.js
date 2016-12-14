@@ -17,6 +17,7 @@ const $ = plugins();
 
 // Look for the --production flag
 const PRODUCTION = !!(yargs.argv.production);
+const EMAIL = yargs.argv.to;
 
 // Declar var so that both AWS and Litmus task can use it.
 var CONFIG;
@@ -32,6 +33,10 @@ gulp.task('default',
 // Build emails, then send to litmus
 gulp.task('litmus',
   gulp.series('build', creds, aws, litmus));
+
+// Build emails, then send to EMAIL
+gulp.task('mail',
+  gulp.series('build', creds, aws, mail));
 
 // Build emails, then zip
 gulp.task('zip',
@@ -70,6 +75,10 @@ function sass() {
     .pipe($.sass({
       includePaths: ['node_modules/foundation-emails/scss']
     }).on('error', $.sass.logError))
+    .pipe($.if(PRODUCTION, $.uncss(
+      {
+        html: ['dist/**/*.html']
+      })))
     .pipe($.if(!PRODUCTION, $.sourcemaps.write()))
     .pipe(gulp.dest('dist/css'));
 }
@@ -98,10 +107,10 @@ function server(done) {
 
 // Watch for file changes
 function watch() {
-  gulp.watch('src/pages/**/*.html').on('change', gulp.series(pages, inline, browser.reload));
-  gulp.watch(['src/layouts/**/*', 'src/partials/**/*']).on('change', gulp.series(resetPages, pages, inline, browser.reload));
-  gulp.watch(['../scss/**/*.scss', 'src/assets/scss/**/*.scss']).on('change', gulp.series(resetPages, sass, pages, inline, browser.reload));
-  gulp.watch('src/assets/img/**/*').on('change', gulp.series(images, browser.reload));
+  gulp.watch('src/pages/**/*.html').on('all', gulp.series(pages, inline, browser.reload));
+  gulp.watch(['src/layouts/**/*', 'src/partials/**/*']).on('all', gulp.series(resetPages, pages, inline, browser.reload));
+  gulp.watch(['../scss/**/*.scss', 'src/assets/scss/**/*.scss']).on('all', gulp.series(resetPages, sass, pages, inline, browser.reload));
+  gulp.watch('src/assets/img/**/*').on('all', gulp.series(images, browser.reload));
 }
 
 // Inlines CSS into HTML, adds media query CSS into the <style> tag of the email, and compresses the HTML
@@ -112,7 +121,8 @@ function inliner(css) {
   var pipe = lazypipe()
     .pipe($.inlineCss, {
       applyStyleTags: false,
-      removeStyleTags: false,
+      removeStyleTags: true,
+      preserveMediaQueries: true,
       removeLinkTags: false
     })
     .pipe($.replace, '<!-- <style> -->', `<style>${mqCss}</style>`)
@@ -137,7 +147,7 @@ function creds(done) {
   done();
 }
 
-// Post images to AWS S3 so they are accessible to Litmus test
+// Post images to AWS S3 so they are accessible to Litmus and manual test
 function aws() {
   var publisher = !!CONFIG.aws ? $.awspublish.create(CONFIG.aws) : $.awspublish.create();
   var headers = {
@@ -163,6 +173,20 @@ function litmus() {
   return gulp.src('dist/**/*.html')
     .pipe($.if(!!awsURL, $.replace(/=('|")(\/?assets\/img)/g, "=$1"+ awsURL)))
     .pipe($.litmus(CONFIG.litmus))
+    .pipe(gulp.dest('dist'));
+}
+
+// Send email to specified email for testing. If no AWS creds then do not replace img urls.
+function mail() {
+  var awsURL = !!CONFIG && !!CONFIG.aws && !!CONFIG.aws.url ? CONFIG.aws.url : false;
+
+  if (EMAIL) {
+    CONFIG.mail.to = [EMAIL];
+  }
+
+  return gulp.src('dist/**/*.html')
+    .pipe($.if(!!awsURL, $.replace(/=('|")(\/?assets\/img)/g, "=$1"+ awsURL)))
+    .pipe($.mail(CONFIG.mail))
     .pipe(gulp.dest('dist'));
 }
 
@@ -195,7 +219,7 @@ function zip() {
     var moveImages = gulp.src(sourcePath)
       .pipe($.htmlSrc({ selector: 'img'}))
       .pipe($.rename(function (path) {
-        path.dirname = fileName + '/assets/img';
+        path.dirname = fileName + '/' + path.dirname;
         return path;
       }));
 
@@ -206,5 +230,3 @@ function zip() {
 
   return merge(moveTasks);
 }
-
-

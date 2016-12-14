@@ -1,21 +1,19 @@
+---
+subject: Welcome to your NorthPointe Account
+---
+
 <span class="preheader">Welcome to your \{{ 'Global' | Attribute:'OrganizationName' }} Account</span>
 
 <container class="radius">
-  <row class="logo">
-    <columns>
-      <spacer size="23"></spacer>
-      <img src="https://s3.northpointe.org.s3.amazonaws.com/assets/logo/whlogo-email.png" width="125px" height="29px" alt="Sentry">
-      <spacer size="23"></spacer>
-    </columns>
-  </row>
+  {{> nplogo }}
   <row>
     <columns class="inner">
 <h1 class="massive">We love making<br>new friends.</h1>
 <p>
-      Hey \{{ Person.FirstName }},<br/><br/>
+      Hey \{{ Person.NickName }},<br/><br/>
 
       Welcome! We&#8217;re so glad you created a NorthPointe account! Your username <span class="emp">\{{ User.UserName }}</span> is now active and can be used to  sign in to our site and access your information.<br/><br/>
-      Thanks,<br/>
+      Thanks,<br/><br/>
       \{{ 'Global' | Attribute:'OrganizationName' }}
 </p>
 

@@ -1,0 +1,33 @@
+---
+subject: Following Notices
+---
+
+
+<container class="radius">
+  {{> nplogo }}
+  <row>
+    <columns class="inner">
+
+      <p>
+          \{{ Person.NickName }},
+      </p>
+
+      <p>
+          Listed below are events that you have requested to be notified about.
+      </p>
+
+      {% for event in EventTypes %}
+          <h2>\{{ event.EventType.Name }}</h2>
+          <table>
+          {% for notice in event.Notices %}
+              \{{ notice }}
+          {% endfor %}
+          </table>
+      {% endfor %}
+
+</columns>
+</row>
+<spacer size="23"></spacer>
+</container>
+
+{{> footer }}
