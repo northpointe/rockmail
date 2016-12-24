@@ -8,9 +8,11 @@ subject: Added To {{ Group.Name }}
 <columns class="inner">
 <p>
     \{{ Person.NickName }}, you have been added to the \{{ Group.GroupType.GroupTerm }}: <em>\{{ Group.Name }}</em>.
+</p>
 
 {% if CreateLogin == true %}
     {% if NewPassword == '' %}
+    <p>
         You can use your \{{ 'Global' | Attribute:'OrganizationName' }} login to access this \{{ Group.GroupType.GroupTerm }}. If
         you have forgotten your password you can use the password reminder feature of our website. Your username is provided below:
         </p>
@@ -19,8 +21,8 @@ subject: Added To {{ Group.Name }}
             <strong>Username:</strong> \{{ Person.Users[0].UserName }}
         </p>
     {% else %}
+    <p>
         A user account has been created for you to access this group information. The details of this account can be found below.
-
         </p>
 
         <p>

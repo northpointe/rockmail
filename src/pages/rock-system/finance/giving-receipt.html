@@ -9,21 +9,23 @@ subject: Giving Receipt from {{ GlobalAttribute.OrganizationName}}
   <row>
     <columns class="inner">
       <h2>Gift of \{{ 'Global' | Attribute:'CurrencySymbol' }}\{{ amount.Amount | Format:'#,##0.00' }} to \{{ 'Global' | Attribute:'OrganizationName' }} successful (#\{{ TransactionCode }})</h2>
-      <p>\{{ FirstNames }},</p>
 
-      <p>Thank you for your financial contribution to NorthPointe! We’re grateful that you have chosen to practice the spiritual habit of Giving Back to God. In Proverbs 3:9, the Bible says we should “honor the Lord by giving him from the first of our income,” and that’s just what you’re doing! Thanks again for your giving to the Lord that helps provide the resources for his work here at NorthPointe!</p>
+<p>Thank you \{{ FirstNames }} for your generous gift of \{{ TotalAmount | Format:'#,##0.00 }} to NorthPointe Community Church{% if AccountNumberMasked %} from your account ending in {{ AccountNumberMasked }}{% endif %}.
+    Because you gave, we&apos;ll be able to reach more people far from God and teach them to follow Jesus step by step.
+    Below is the confirmation number and details of your gift.</p>
 
       <spacer size="23"></spacer>
       {{> transactiontable }}
       <spacer size="23"></spacer>
 
       <p>
-If you need help with anything, or would like to send us your feedback, please contact us at <a href="mailto:giving@northpointe.org">giving@northpointe.org</a>.</p>
-<spacer size="23"></spacer>
-<p>
-Thank You,<br/>
-\{{ 'Global' | Attribute:'OrganizationName' }}
-</p>
+<a href="https://my.northpointe.org/give/recurring">Scheduling your giving</a> or viewing your <a href="https://my.northpointe.org/give/history">giving history</a> is easy.
+{% if Person.Users | Size > 0 %}<a href="https://my.northpointe.org/profile">sign in</a> to your NorthPointe Profile{% else -%} create a <a href="https://my.northpointe.org/profile">NewSpring Profile.</a>{% endif %}
+
+
+If you have any questions please call our Finance Team at (559) 276-2300 or e-mail us at <a href="mailto:giving@northpointe.org">giving@northpointe.org</a> and we will be happy to assist you!
+        </p>
+
     </columns>
   </row>
 <spacer size="23"></spacer>
