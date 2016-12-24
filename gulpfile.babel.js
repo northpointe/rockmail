@@ -77,7 +77,8 @@ function sass() {
     }).on('error', $.sass.logError))
     .pipe($.if(PRODUCTION, $.uncss(
       {
-        html: ['dist/**/*.html']
+        html: ['dist/**/*.html'],
+        ignore: ['a[href^="x-apple-data-detectors"]','* [data-term]']
       })))
     .pipe($.if(!PRODUCTION, $.sourcemaps.write()))
     .pipe(gulp.dest('dist/css'));

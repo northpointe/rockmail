@@ -1,11 +1,17 @@
 
+span.preheader{
+  display: none; mso-hide: all; width: 0px; height: 0px; max-width: 0px; max-height: 0px; font-size: 0px; line-height: 0px;
+}
+
 @media screen {
 a[href^="x-apple-data-detectors"] {
-        color: inherit !important;
-        text-decoration: none !important;
-        pointer-events: none !important; }
+  color: inherit !important;
+  text-decoration: none !important;
+  pointer-events: none !important;
+}
 
 * [data-term] {
   border-bottom: none !important;
-  pointer-events: none !important; }
+  pointer-events: none !important;
+}
 }

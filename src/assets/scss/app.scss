@@ -1,6 +1,7 @@
 @import 'settings';
 @import 'foundation-emails';
 @import 'fonts';
+@import 'hacks';
 
 img.logo-img{
   max-width:70%;
@@ -34,6 +35,7 @@ table.footer{
   p{
     margin-bottom: 0;
     Margin-bottom: 0;
+    line-height: 1;
   }
 }
 
@@ -85,20 +87,14 @@ table.row.whlogo {
 table.row.logo {
   border-bottom:1px solid #dee7eb;
 
-  .columns{
-    padding-bottom:0;
+  th.columns{
+    padding-left:29px;
+    padding-right:29px;
+    padding-bottom:23px;
+    padding-top:23px;
   }
 }
 
-
-
-table.container.preheader {
-  th {
-    padding-left: 0;
-    padding-right: 0;
-    padding-bottom:0;
-  }
-}
 
 table.container.radius {
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
@@ -123,5 +119,3 @@ img.np-logo{
   color:$button-background;
   font-weight:600;
 }
-
-@import 'hacks';
