@@ -1,4 +1,4 @@
-# NorthPointe Community Church Foundation for Emails Template
+# RockMail Templates for Rock RMS
 
 RockMail is a collection of responsive transactional email templates for [Rock RMS](http://rockrms.com) using [Foundation for Emails](http://foundation.zurb.com/emails), a framework for creating responsive HTML devices that work in any email client. It has a Gulp-powered build system with these features:
 
