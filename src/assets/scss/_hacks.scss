@@ -1,3 +1,12 @@
+// Fix for Outlook 2007-2013 ignoring margin on bottom
+p a {
+  Margin: inherit;
+  margin: inherit;
+}
+// Fix text center on modern email clients
+table.button table td a {
+  text-align: center;
+}
 
 span.preheader{
   display: none; mso-hide: all; width: 0px; height: 0px; max-width: 0px; max-height: 0px; font-size: 0px; line-height: 0px;
