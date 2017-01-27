@@ -1,16 +1,16 @@
 ---
-subject: Wherehouse Registration
-description: Your student is registered for \{{ RegistrationInstance.Name }}
+subject: Event Confirmation Email
+description: \{%- for registrant in Registration.Registrants -%}{{ registrant.PersonAlias.Person.FullName }} {% endfor -%} is registered for \{{ RegistrationInstance.Name }}
 ---
 
 <container class="radius">
-  {{> whlogo }}
+  {{> nplogo }}
   <row>
     <columns class="inner">
       {% capture currencySymbol %}\{{ 'Global' | Attribute:'CurrencySymbol' }}{% endcapture %}
       {% assign registrantCount = Registration.Registrants | Size %}
 
-      <h2>\{{ RegistrationInstance.RegistrationTemplate.RegistrationTerm }} Confirmation for \{{ RegistrationInstance.Name }}</h2>
+      <h1>\{{ RegistrationInstance.RegistrationTemplate.RegistrationTerm }} Confirmation: \{{ RegistrationInstance.Name }}</h1>
 
       <p>
           The following \{{ RegistrationInstance.RegistrationTemplate.RegistrantTerm | PluralizeForQuantity:registrantCount | Downcase }}
@@ -20,7 +20,8 @@ description: Your student is registered for \{{ RegistrationInstance.Name }}
       <ul>
       {% for registrant in Registration.Registrants %}
           <li>
-              <strong class="emp">\{{ registrant.PersonAlias.Person.FullName }}</strong>
+
+              <strong>\{{ registrant.PersonAlias.Person.FullName }}</strong>
 
               {% if registrant.Cost > 0 %}
                   - \{{ currencySymbol }}\{{ registrant.Cost | Format:'#,##0.00' }}
@@ -74,7 +75,7 @@ description: Your student is registered for \{{ RegistrationInstance.Name }}
 
     </columns>
   </row>
-
+<spacer size="23"></spacer>
 </container>
 
 {{> footer }}

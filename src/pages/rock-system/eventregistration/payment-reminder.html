@@ -1,10 +1,10 @@
 ---
-subject: Wherehouse Payment Reminder
+subject: Payment Reminder
 description: Payment reminder for {% for registrant in Registration.Registrants %}{{ registrant.PersonAlias.Person.FullName }} {% endfor -%}
 ---
 
 <container class="radius">
-  {{> whlogo }}
+  {{> nplogo }}
   <row>
     <columns class="inner">
       {% capture currencySymbol %}\{{ 'Global' | Attribute:'CurrencySymbol' }}{% endcapture %}
@@ -15,7 +15,8 @@ description: Payment reminder for {% for registrant in Registration.Registrants 
 
       <p>
           This \{{ RegistrationInstance.RegistrationTemplate.RegistrationTerm | Downcase  }} for \{{ RegistrationInstance.Name }} has a remaining balance
-          of \{{ currencySymbol }}\{{ Registration.BalanceDue | Format:'#,##0.00' }}. The
+          of \{{ currencySymbol }}\{{ Registration.BalanceDue | Format:'#,##0.00' }}.
+          The
           \{{ RegistrationInstance.RegistrationTemplate.RegistrantTerm | Downcase | Pluralize  }} for this
           \{{ RegistrationInstance.RegistrationTemplate.RegistrationTerm }} are below.
       </p>
@@ -26,11 +27,11 @@ description: Payment reminder for {% for registrant in Registration.Registrants 
       {% endfor %}
       </ul>
 
-      <p>
-          You can complete the payment for this \{{ RegistrationInstance.RegistrationTemplate.RegistrationTerm | Downcase }}
-          using our <a class="emp" href='\{{ externalSite }}/Registration?RegistrationId=\{{ Registration.Id }}&rckipid=\{{ Registration.PersonAlias.Person.UrlEncodedKey }}'>
-          online registration page</a>.
-      </p>
+      <spacer size="16"></spacer>
+        <center>
+              <button class="rounded large" href="\{{ externalSite }}/Registration?RegistrationId=\{{ Registration.Id }}&rckipid=\{{ Registration.PersonAlias.Person.UrlEncodedKey }}">Make Payment</button>
+        </center>
+      <spacer size="16"></spacer>
 
       <p>
           If you have any questions please contact \{{ RegistrationInstance.ContactName }} at \{{ RegistrationInstance.ContactEmail }}.

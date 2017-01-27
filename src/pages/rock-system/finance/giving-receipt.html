@@ -10,7 +10,7 @@ subject: Giving Receipt from {{ GlobalAttribute.OrganizationName}}
     <columns class="inner">
       <h2>Gift of \{{ 'Global' | Attribute:'CurrencySymbol' }}\{{ amount.Amount | Format:'#,##0.00' }} to \{{ 'Global' | Attribute:'OrganizationName' }} successful (#\{{ TransactionCode }})</h2>
 
-<p>Thank you \{{ FirstNames }} for your generous gift of \{{ TotalAmount | Format:'#,##0.00 }} to NorthPointe Community Church{% if AccountNumberMasked %} from your account ending in {{ AccountNumberMasked }}{% endif %}.
+<p>Thank you \{{ FirstNames }} for your generous gift of \{{ TotalAmount | Format:'#,##0.00 }} to \{{ 'Global' | Attribute:'OrganizationName' }}{% if AccountNumberMasked %} from your account ending in {{ AccountNumberMasked }}{% endif %}.
     Because you gave, we&apos;ll be able to reach more people far from God and teach them to follow Jesus step by step.
     Below is the confirmation number and details of your gift.</p>
 
@@ -19,8 +19,8 @@ subject: Giving Receipt from {{ GlobalAttribute.OrganizationName}}
       <spacer size="23"></spacer>
 
       <p>
-<a href="https://my.northpointe.org/give/recurring">Scheduling your giving</a> or viewing your <a href="https://my.northpointe.org/give/history">giving history</a> is easy.
-{% if Person.Users | Size > 0 %}<a href="https://my.northpointe.org/profile">sign in</a> to your NorthPointe Profile{% else -%} create a <a href="https://my.northpointe.org/profile">NewSpring Profile.</a>{% endif %}
+<a href="\{{ 'Global' | Attribute:'PublicApplicationRoot' }}/give/recurring">Scheduling your giving</a> or viewing your <a href="\{{ 'Global' | Attribute:'PublicApplicationRoot' }}/give/history">giving history</a> is easy.
+{% if Person.Users | Size > 0 %}<a href="\{{ 'Global' | Attribute:'PublicApplicationRoot' }}/profile">sign in</a> to your NorthPointe Profile{% else -%} create a <a href="\{{ 'Global' | Attribute:'PublicApplicationRoot' }}/profile">\{{ 'Global' | Attribute:'OrganizationAbbreviation' }} Profile.</a>{% endif %}
 
 
 If you have any questions please call our Finance Team at (559) 276-2300 or e-mail us at <a href="mailto:giving@northpointe.org">giving@northpointe.org</a> and we will be happy to assist you!

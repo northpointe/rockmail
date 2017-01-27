@@ -12,7 +12,7 @@ subject: Welcome to your NorthPointe Account
 <p>
       Hey \{{ Person.NickName }},<br/><br/>
 
-      Welcome! We&#8217;re so glad you created a NorthPointe account! Your username <span class="emp">\{{ User.UserName }}</span> is now active and can be used to  sign in to our site and access your information.<br/><br/>
+      Welcome! We&#8217;re so glad you created a \{{ 'Global' | Attribute:'OrganizationAbbreviation' }} account! Your username <span class="emp">\{{ User.UserName }}</span> is now active and can be used to  sign in to our site and access your information.<br/><br/>
       Thanks,<br/><br/>
       \{{ 'Global' | Attribute:'OrganizationName' }}
 </p>
