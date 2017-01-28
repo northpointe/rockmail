@@ -1,14 +1,13 @@
 ---
 subject: Pledge Confirmation
+description: \{{ RegistrationInstance.Name }} Registration
 ---
 
 <span class="preheader">Data update for \{{ FirstName }} \{{ LastName }}</span>
-
 <container class="radius">
   {{> nplogo }}
   <row>
     <columns class="inner">
-
       <p>\{{ Person.FirstName }},</p>
 
       <p>Thank you for your commitment to our \{{ Account.Name }} account. Your financial gifts help us to continue to reach our mission.</p>
@@ -19,10 +18,8 @@ subject: Pledge Confirmation
       <br/>
       <p>Thank you,</p><br/>
       <p>\{{ 'Global' | Attribute:'OrganizationName' }}</p>
-
-</columns>
-</row>
-<spacer size="23"></spacer>
+    </columns>
+  </row>
+  <spacer size="23"></spacer>
 </container>
-
 {{> footer }}

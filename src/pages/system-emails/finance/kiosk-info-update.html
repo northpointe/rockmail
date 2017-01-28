@@ -1,8 +1,7 @@
 ---
 subject: Data update for {{ FirstName }} {{ LastName }}
+description: \{{ RegistrationInstance.Name }} Registration
 ---
-
-<span class="preheader">Data update for \{{ FirstName }} \{{ LastName }}</span>
 
 <container class="radius">
   {{> nplogo }}
@@ -10,46 +9,45 @@ subject: Data update for {{ FirstName }} {{ LastName }}
     <columns class="inner">
       <h2>Self-service Kiosk Update</h2>
 
-{% if PersonId != '' %}
-<p>
-    <a href="\{{ 'Global' | Attribute:'InternalApplicationRoot' }}/Person/\{{ PersonId }}">\{{ FirstName }} \{{ LastName }}'s Record</a>
-</p>
-{% endif %}
+      {% if PersonId != '' %}
+      <p>
+          <a href="\{{ 'Global' | Attribute:'InternalApplicationRoot' }}/Person/\{{ PersonId }}">\{{ FirstName }} \{{ LastName }}'s Record</a>
+      </p>
+      {% endif %}
 
-<p>
-<strong>First Name:</strong> \{{ FirstName }} <br/>
-<strong>Last Name:</strong> \{{ LastName }} <br/>
-{% if BirthDate != '' %}<strong>Birth Date:</strong> \{{ BirthDate }} <br/>{% endif %}
-{% if Email != '' %}<strong>Email:</strong> \{{ Email }} <br/>{% endif %}
-</p>
-{% if HomePhone != '' or MobilePhone != '' %}
-    <p>
-    {% if HomePhone != '' %}
-        <strong>Home Phone:</strong> \{{ HomePhone }} <br/>
-    {% endif %}
-    {% if MobilePhone != '' %}
-        <strong>Mobile Phone:</strong> \{{ MobilePhone }} <br/>
-    {% endif %}
-    </p>
-{% endif %}
+      <p>
+      <strong>First Name:</strong> \{{ FirstName }} <br/>
+      <strong>Last Name:</strong> \{{ LastName }} <br/>
+      {% if BirthDate != '' %}<strong>Birth Date:</strong> \{{ BirthDate }} <br/>{% endif %}
+      {% if Email != '' %}<strong>Email:</strong> \{{ Email }} <br/>{% endif %}
+      </p>
+      {% if HomePhone != '' or MobilePhone != '' %}
+          <p>
+          {% if HomePhone != '' %}
+              <strong>Home Phone:</strong> \{{ HomePhone }} <br/>
+          {% endif %}
+          {% if MobilePhone != '' %}
+              <strong>Mobile Phone:</strong> \{{ MobilePhone }} <br/>
+          {% endif %}
+          </p>
+      {% endif %}
 
-{% if StreetAddress != '' %}
-    <p>
-        <strong>Address:</strong><br/>
-        \{{ StreetAddress }} <br />
-        \{{ City }}, \{{ State }} \{{ PostalCode }} \{{ County }}
-    </p>
-{% endif %}
+      {% if StreetAddress != '' %}
+          <p>
+              <strong>Address:</strong><br/>
+              \{{ StreetAddress }} <br />
+              \{{ City }}, \{{ State }} \{{ PostalCode }} \{{ County }}
+          </p>
+      {% endif %}
 
-{% if OtherUpdates != '' %}
-    <p>
-        <strong>Other Updates:</strong> \{{ OtherUpdates }}
-    </p>
-{% endif %}
-
-</columns>
-</row>
-<spacer size="23"></spacer>
+      {% if OtherUpdates != '' %}
+          <p>
+              <strong>Other Updates:</strong> \{{ OtherUpdates }}
+          </p>
+      {% endif %}
+    </columns>
+  </row>
+  <spacer size="23"></spacer>
 </container>
 
 {{> footer }}

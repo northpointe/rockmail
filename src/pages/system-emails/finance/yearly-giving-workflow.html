@@ -1,5 +1,6 @@
 ---
 subject: Yearly Giving Statement
+description: \{{ RegistrationInstance.Name }} Registration
 ---
 <span class="preheader">Thank you for your continued support of \{{ 'Global' | Attribute:'OrganizationName' }}!</span>
 {% assign StatementYear = 'Now' | Date:'yyyy' | Minus:1 %}
@@ -12,15 +13,11 @@ subject: Yearly Giving Statement
       <p>\{{ Workflow.CustomMessage | NewlineToBr }}</p>
 
       <spacer size="16"></spacer>
-<center>
-      <button class="rounded medium" href="\{{ 'Global' | Attribute:'PublicApplicationRoot' }}page/444?StatementYear=\{{ StatementYear }}&\{{ Person.ImpersonationParameter }}">View Your \{{ StatementYear }} Giving Statement</button>
-</center>
-<spacer size="16"></spacer>
-
+      <center>
+        <button class="rounded medium" href="\{{ 'Global' | Attribute:'PublicApplicationRoot' }}page/444?StatementYear=\{{ StatementYear }}&\{{ Person.ImpersonationParameter }}">View Your \{{ StatementYear }} Giving Statement</button>
+      </center>
+      <spacer size="16"></spacer>
     </columns>
   </row>
-
-  </row>
 </container>
-
 {{> footer }}
