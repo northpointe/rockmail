@@ -1,0 +1,126 @@
+
+<!doctype html><html lang="en"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <link rel="stylesheet" type="text/css" href="../../css/app.css">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Workflows</title>
+    <!-- <style> -->
+  </head>
+  <body>
+    <span class="preheader"></span>
+    <table class="body" cellpadding="0" cellspacing="0" width="100%" border="0">
+      <tr>
+        <td class="center" align="center" valign="top">
+          <center data-parsed="">
+            <!-- {{ Workflow.WorkflowType.Name }} {{ Workflow.Name }} -->
+            <table align="center" class="container radius float-center"><tbody><tr><td>
+              <table class="row logo"><tbody><tr>
+                <th class="small-12 large-12 columns first last"><table><tr><th>
+                  <img alt="NorthPointe Community Church" class="logo-img" src="https://northpointemail.s3.amazonaws.com/logo/northpointelogov1.png" width="239" height="45">
+                </th>
+<th class="expander"></th></tr></table></th>
+              </tr></tbody></table>
+              
+              <table class="row"><tbody><tr>
+                <th class="inner small-12 large-12 columns first last"><table><tr><th>
+            
+                  <p>{{ Person.FirstName }},</p>
+                  <p>The following {{ Workflow.WorkflowType.Name }} requires action:</p><p>
+            
+                  </p><p>{{ Workflow.WorkflowType.WorkTerm }}:
+                    <a href="{{ 'Global' | Attribute:'InternalApplicationRoot' }}WorkflowEntry/{{ Workflow.WorkflowTypeId }}?WorkflowGuid={{ Workflow.Guid }}">{{ Workflow.Name }}</a>
+                  </p>
+            
+                  {% assign RequiredFields = false %}
+                  <h3 class="separator">Details</h3>
+            
+                  {% for attribute in Action.FormAttributes %}
+                      {% if attribute.IsVisible and attribute.Value != '' %}
+                          <div>
+                              <strong>{{ attribute.Name }}:</strong>
+                              <br>
+                                  {% if attribute.Url and attribute.Url != '' %}
+                                      <a href="{{ attribute.Url }}">{{ attribute.Value }}</a>
+                                  {% else %}
+                                      {{ attribute.Value }}
+                                  {% endif %}
+                          </div>
+                          <br>
+                      {% endif %}
+            
+                      {% if attribute.IsRequired and attribute.Value == Empty %}
+                          {% assign RequiredFields = true %}
+                      {% endif %}
+                  {% endfor %}
+            
+                  <table align="left" style="width: 29%; min-width: 190px; margin-bottom: 12px;" cellpadding="0" cellspacing="0">
+                   <tr>
+                     <td>
+            
+                      <div><!--[if mso]>
+                        <v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="{{ 'Global' | Attribute:'InternalApplicationRoot' }}WorkflowEntry/{{ Workflow.WorkflowTypeId }}?WorkflowGuid={{ Workflow.Guid }}" style="height:38px;v-text-anchor:middle;width:175px;" arcsize="11%" strokecolor="#269abc" fillcolor="#31b0d5">
+                        <w:anchorlock/>
+                        <center style="color:#ffffff;font-family:sans-serif;font-size:14px;font-weight:normal;">View Details</center>
+                        </v:roundrect>
+                      <![endif]--><a href="{{ 'Global' | Attribute:'InternalApplicationRoot' }}WorkflowEntry/{{ Workflow.WorkflowTypeId }}?WorkflowGuid={{ Workflow.Guid }}" style="background-color:#31b0d5;border:1px solid #269abc;border-radius:4px;color:#ffffff;display:inline-block;font-family:sans-serif;font-size:14px;font-weight:normal;line-height:38px;text-align:center;text-decoration:none;width:175px;-webkit-text-size-adjust:none;mso-hide:all;">View Details</a></div>
+            
+                    </td>
+                   </tr>
+                  </table>
+            
+                  {% if Action.ActionType.WorkflowForm.IncludeActionsInNotification == true %}
+                      {% if RequiredFields != true %}
+                          {% for button in Action.ActionType.WorkflowForm.Buttons %}
+                              {% capture ButtonLinkSearch %}{% raw %}{{ ButtonLink }}{% endraw %}{% endcapture %}
+                              {% capture ButtonLinkReplace %}{{ 'Global' | Attribute:'InternalApplicationRoot' }}WorkflowEntry/{{ Workflow.WorkflowTypeId }}?WorkflowGuid={{ Workflow.Guid }}&action={{ button.Name }}{% endcapture %}
+                              {% capture ButtonHtml %}{{ button.EmailHtml | Replace: ButtonLinkSearch, ButtonLinkReplace }}{% endcapture %}
+            
+                              {% capture ButtonTextSearch %}{% raw %}{{ ButtonText }}{% endraw %}{% endcapture %}
+                              {% capture ButtonTextReplace %}{{ button.Name }}{% endcapture %}
+                              {{ ButtonHtml | Replace: ButtonTextSearch, ButtonTextReplace }}
+                          {% endfor %}
+                      {% endif %}
+                  {% endif %}
+            
+            
+                  <table class="spacer"><tbody><tr><td height="16px" style="font-size:16px;line-height:16px;">&#xA0;</td></tr></tbody></table> 
+            
+            
+                </th>
+<th class="expander"></th></tr></table></th>
+              </tr></tbody></table>
+            
+              
+            </td></tr></tbody></table>
+            
+            <table align="center" class="container footer float-center"><tbody><tr><td>
+              <table class="spacer"><tbody><tr><td height="10px" style="font-size:10px;line-height:10px;">&#xA0;</td></tr></tbody></table> 
+              <table class="row"><tbody><tr>
+                <th class="small-12 large-12 columns first last"><table><tr><th>
+                  <p class="text-center"><small>Sent with &hearts; from
+                    <a class="quiet" href="https://www.northpointe.org/">
+                      NorthPointe
+                    </a>
+                    <br>2787 W Bullard Ave #101, Fresno, CA 93711
+            </small></p>
+            <table class="spacer"><tbody><tr><td height="10px" style="font-size:10px;line-height:10px;">&#xA0;</td></tr></tbody></table> 
+            <center data-parsed="">
+                  <img width="40" class="float-center np-logo" src="https://northpointemail.s3.amazonaws.com/logo/the-n.png" align="center">
+            </center>
+              </th>
+<th class="expander"></th></tr></table></th></tr></tbody></table>
+              <!-- Modify UnsubscribeOption via Admin Tools / Communications / Communication Mediums  -->
+              <p class="text-center"><small>[[ UnsubscribeOption ]]</small></p>
+            <table class="spacer"><tbody><tr><td height="30px" style="font-size:30px;line-height:30px;">&#xA0;</td></tr></tbody></table> 
+            </td></tr></tbody></table>
+            
+            
+          </center>
+        </td>
+      </tr>
+    </table>
+    <!-- prevent Gmail on iOS font size manipulation -->
+   <div style="display:none; white-space:nowrap; font:15px courier; line-height:0;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </div>
+  </body>
+</html>

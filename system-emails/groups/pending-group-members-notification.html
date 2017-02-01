@@ -1,0 +1,78 @@
+
+<!doctype html><html lang="en"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <link rel="stylesheet" type="text/css" href="../../css/app.css">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>New Pending Group Members | {{ &#x27;Global&#x27;  | Attribute:&#x27;OrganizationName&#x27; }}</title>
+    <!-- <style> -->
+  </head>
+  <body>
+    <span class="preheader"></span>
+    <table class="body" cellpadding="0" cellspacing="0" width="100%" border="0">
+      <tr>
+        <td class="center" align="center" valign="top">
+          <center data-parsed="">
+            
+            {{ 'Global' | Attribute:'EmailHeader' }}
+            
+            <p align="center" class="float-center">
+                {{ Person.NickName }},
+            </p>
+            
+            <p align="center" class="float-center">
+                We wanted to make you aware of additional individuals who have taken the next step to connect with
+                group. The individuals' names and contact information can be found below. Our
+                goal is to contact new members within 24-48 hours of receiving this e-mail.
+            </p>
+            
+            <table cellpadding="25" align="center" class="float-center">
+            {% for pendingIndividual in PendingIndividuals %}
+                <tr><td>
+                    <strong>{{ pendingIndividual.FullName }}</strong><br>
+                    {% assign mobilePhone = pendingIndividual.PhoneNumbers | Where:'NumberTypeValueId', 136 | Select:'NumberFormatted' %}
+                    {% assign homePhone = pendingIndividual.PhoneNumbers | Where:'NumberTypeValueId', 13 | Select:'NumberFormatted' %}
+                    {% assign homeAddress = pendingIndividual | Address:'Home' %}
+            
+                    {% if mobilePhone != empty %}
+                        Mobile Phone: {{ mobilePhone }}<br>
+                    {% endif %}
+            
+                    {% if homePhone != empty %}
+                        Home Phone: {{ homePhone }}<br>
+                    {% endif %}
+            
+                    {% if pendingIndividual.Email != empty %}
+                        {{ pendingIndividual.Email }}<br>
+                    {% endif %}
+            
+                    <p>
+                    {% if homeAddress != empty %}
+                        Home Address <br>
+                        {{ homeAddress }}
+                    {% endif %}
+                    </p>
+            
+                </td></tr>
+            {% endfor %}
+            </table>
+            
+            
+            <p align="center" class="float-center">
+                Once you have connected with these individuals, please mark them as active.
+            </p>
+            
+            <p align="center" class="float-center">
+                Thank you for your on-going commitment to {{ 'Global' | Attribute:'OrganizationName' }}.
+            </p>
+            
+            {{ 'Global' | Attribute:'EmailFooter' }}
+            
+          </center>
+        </td>
+      </tr>
+    </table>
+    <!-- prevent Gmail on iOS font size manipulation -->
+   <div style="display:none; white-space:nowrap; font:15px courier; line-height:0;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </div>
+  </body>
+</html>

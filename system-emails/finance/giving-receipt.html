@@ -1,0 +1,109 @@
+
+<!doctype html><html lang="en"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <link rel="stylesheet" type="text/css" href="../../css/app.css">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Giving Receipt from {{ GlobalAttribute.OrganizationName}}</title>
+    <!-- <style> -->
+  </head>
+  <body>
+    <span class="preheader"></span>
+    <table class="body" cellpadding="0" cellspacing="0" width="100%" border="0">
+      <tr>
+        <td class="center" align="center" valign="top">
+          <center data-parsed="">
+            
+            <span class="preheader float-center" align="center">Thank you for your gift of {{ 'Global' | Attribute:'CurrencySymbol' }}{{ amount.Amount | Format:'#,##0.00' }} to {{ 'Global' | Attribute:'OrganizationName' }}</span>
+            
+            <table align="center" class="container radius float-center"><tbody><tr><td>
+              <table class="row logo"><tbody><tr>
+                <th class="small-12 large-12 columns first last"><table><tr><th>
+                  <img alt="NorthPointe Community Church" class="logo-img" src="https://northpointemail.s3.amazonaws.com/logo/northpointelogov1.png" width="239" height="45">
+                </th>
+<th class="expander"></th></tr></table></th>
+              </tr></tbody></table>
+              
+              <table class="row"><tbody><tr>
+                <th class="inner small-12 large-12 columns first last"><table><tr><th>
+                  <h2>Gift of {{ 'Global' | Attribute:'CurrencySymbol' }}{{ amount.Amount | Format:'#,##0.00' }} to {{ 'Global' | Attribute:'OrganizationName' }} successful (#{{ TransactionCode }})</h2>
+            
+            <p>Thank you {{ FirstNames }} for your generous gift of {{ TotalAmount | Format:'#,##0.00 }} to {{ 'Global' | Attribute:'OrganizationName' }}{% if AccountNumberMasked %} from your account ending in {% endif %}.
+                Because you gave, we&apos;ll be able to reach more people far from God and teach them to follow Jesus step by step.
+                Below is the confirmation number and details of your gift.</p>
+            
+                  <table class="spacer"><tbody><tr><td height="23px" style="font-size:23px;line-height:23px;">&#xA0;</td></tr></tbody></table> 
+                  <table style="background:white;border:1px solid #dddddd;border-radius: 5px;border-spacing:0;margin:0;padding:20px 0;table-layout:fixed;text-align:center;width:100%;border-collapse: separate;">
+                      <tbody><tr>
+                          <th style="border-right:1px solid #dddddd;padding:10px 30px;text-align:left;width:50%">Recipient</th>
+                          <td style="margin:0;padding:10px 30px;text-align:left;width:50%">{{ 'Global' | Attribute:'OrganizationName' }}</td>
+                      </tr>
+                      <tr>
+                          <th style="border-right:1px solid #dddddd;padding:10px 30px;text-align:left;width:50%">Amount</th>
+                          <td style="margin:0;padding:10px 30px;text-align:left;width:50%">{{ 'Global' | Attribute:'CurrencySymbol' }} {{ TotalAmount | Format:'#,##0.00' }}</td>
+                      </tr>
+                  	<tr>
+                  		<th style="border-right:1px solid #dddddd;padding:10px 30px;text-align:left;width:50%">Date</th>
+                  		<td style="margin:0;padding:10px 30px;text-align:left;width:50%">{date_mdy}</td>
+                  	</tr>
+                      <tr>
+                          <th style="border-right:1px solid #dddddd;padding:10px 30px;text-align:left;width:50%">Transaction No.</th>
+                          <td style="margin:0;padding:10px 30px;text-align:left;width:50%">{{ TransactionCode }}</td>
+                      </tr>
+                  
+                      <tr>
+                          <th style="border-right:1px solid #dddddd;padding:10px 30px;text-align:left;width:50%">Funds</th>
+                          <td style="margin:0;padding:10px 30px;text-align:left;width:50%">
+                              {% for amount in Amounts %}
+                          <strong>{{ amount.AccountName }}</strong> {{ 'Global' | Attribute:'CurrencySymbol' }}{{ amount.Amount | Format:'#,##0.00' }}<br>
+                              {% endfor %}
+                      </td></tr>
+                  </tbody>
+                  </table>
+                  
+                  <table class="spacer"><tbody><tr><td height="23px" style="font-size:23px;line-height:23px;">&#xA0;</td></tr></tbody></table> 
+            
+                  <p>
+            <a href="{{ 'Global' | Attribute:'PublicApplicationRoot' }}/give/recurring">Scheduling your giving</a> or viewing your <a href="{{ 'Global' | Attribute:'PublicApplicationRoot' }}/give/history">giving history</a> is easy.
+            {% if Person.Users | Size > 0 %}<a href="{{ 'Global' | Attribute:'PublicApplicationRoot' }}/profile">sign in</a> to your NorthPointe Profile{% else -%} create a <a href="{{ 'Global' | Attribute:'PublicApplicationRoot' }}/profile">{{ 'Global' | Attribute:'OrganizationAbbreviation' }} Profile.</a>{% endif %}
+            
+            
+            If you have any questions please call our Finance Team at (559) 276-2300 or e-mail us at <a href="mailto:giving@northpointe.org">giving@northpointe.org</a> and we will be happy to assist you!
+                    </p>
+            
+                </th>
+<th class="expander"></th></tr></table></th>
+              </tr></tbody></table>
+            <table class="spacer"><tbody><tr><td height="23px" style="font-size:23px;line-height:23px;">&#xA0;</td></tr></tbody></table> 
+            </td></tr></tbody></table>
+            
+            <table align="center" class="container footer float-center"><tbody><tr><td>
+              <table class="spacer"><tbody><tr><td height="10px" style="font-size:10px;line-height:10px;">&#xA0;</td></tr></tbody></table> 
+              <table class="row"><tbody><tr>
+                <th class="small-12 large-12 columns first last"><table><tr><th>
+                  <p class="text-center"><small>Sent with &hearts; from
+                    <a class="quiet" href="https://www.northpointe.org/">
+                      NorthPointe
+                    </a>
+                    <br>2787 W Bullard Ave #101, Fresno, CA 93711
+            </small></p>
+            <table class="spacer"><tbody><tr><td height="10px" style="font-size:10px;line-height:10px;">&#xA0;</td></tr></tbody></table> 
+            <center data-parsed="">
+                  <img width="40" class="float-center np-logo" src="https://northpointemail.s3.amazonaws.com/logo/the-n.png" align="center">
+            </center>
+              </th>
+<th class="expander"></th></tr></table></th></tr></tbody></table>
+              <!-- Modify UnsubscribeOption via Admin Tools / Communications / Communication Mediums  -->
+              <p class="text-center"><small>[[ UnsubscribeOption ]]</small></p>
+            <table class="spacer"><tbody><tr><td height="30px" style="font-size:30px;line-height:30px;">&#xA0;</td></tr></tbody></table> 
+            </td></tr></tbody></table>
+            
+            
+          </center>
+        </td>
+      </tr>
+    </table>
+    <!-- prevent Gmail on iOS font size manipulation -->
+   <div style="display:none; white-space:nowrap; font:15px courier; line-height:0;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </div>
+  </body>
+</html>

@@ -1,0 +1,81 @@
+
+<!doctype html><html lang="en"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <link rel="stylesheet" type="text/css" href="../../css/app.css">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Group Attendance</title>
+    <!-- <style> -->
+  </head>
+  <body>
+    <span class="preheader"></span>
+    <table class="body" cellpadding="0" cellspacing="0" width="100%" border="0">
+      <tr>
+        <td class="center" align="center" valign="top">
+          <center data-parsed="">
+            {% capture today %}{{ 'Now' | Date:'yyyyMMdd' }}{% endcapture %}
+            {% capture occurrenceDate %}{{ Occurrence | Date:'yyyyMMdd' }}{% endcapture %}
+            {% capture attendanceLink %}{{ 'Global' | Attribute:'PublicApplicationRoot' }}page/368?{{ Person.ImpersonationParameter }}&GroupId={{ Group.Id }}&Occurrence={{ Occurrence | Date:'yyyy-MM-ddTHH\%3amm\%3ass' }}{% endcapture %}
+            
+            
+            <span class="preheader float-center" align="center">Hi {{ Person.NickName }}, send us your Wherehouse small group attendance.</span>
+            
+            <table align="center" class="container radius float-center"><tbody><tr><td>
+              <table class="row logo"><tbody><tr>
+                <th class="small-12 large-12 columns first last"><table><tr><th>
+                  <img alt="NorthPointe Community Church" class="logo-img" src="https://northpointemail.s3.amazonaws.com/logo/northpointelogov1.png" width="239" height="45">
+                </th>
+<th class="expander"></th></tr></table></th>
+              </tr></tbody></table>
+              
+              <table class="row"><tbody><tr>
+                <th class="inner small-12 large-12 columns first last"><table><tr><th>
+                  {% if today == occurrenceDate %}
+                  <h1 class="text-center massive">Hi {{ Person.NickName }}!<br><small>we can&#8217;t wait to see you tonight</small></h1>
+                  {% else %}
+                  <p>Hi {{ Person.NickName }},</p>
+                  {% endif %}
+                  <p>Please remember to enter attendance for your Wherehouse small group {% if today == occurrenceDate %}tonight.{% else %}{% if today > occurrenceDate %}that met on {{ Occurrence | Date:'dddd' }}. If you didn&#8217;t meet, no problem! Just take attendance, and mark <i>we did not meet</i> to let us know.{% else %}that meets on {{ Occurrence | Date:'dddd' }}.{% endif %}{% endif %}</p>
+            
+                  <table class="spacer"><tbody><tr><td height="16px" style="font-size:16px;line-height:16px;">&#xA0;</td></tr></tbody></table> 
+            <center data-parsed="">
+                  <table class="button rounded large float-center"><tr><td><table><tr><td><a href="{{ attendanceLink }}">Enter Attendance</a></td></tr></table></td></tr></table>
+            </center>
+            <table class="spacer"><tbody><tr><td height="16px" style="font-size:16px;line-height:16px;">&#xA0;</td></tr></tbody></table> 
+            
+                </th>
+<th class="expander"></th></tr></table></th>
+              </tr></tbody></table>
+            
+            </td></tr></tbody></table>
+            
+            <table align="center" class="container footer float-center"><tbody><tr><td>
+              <table class="spacer"><tbody><tr><td height="10px" style="font-size:10px;line-height:10px;">&#xA0;</td></tr></tbody></table> 
+              <table class="row"><tbody><tr>
+                <th class="small-12 large-12 columns first last"><table><tr><th>
+                  <p class="text-center"><small>Sent with &hearts; from
+                    <a class="quiet" href="https://www.northpointe.org/">
+                      NorthPointe
+                    </a>
+                    <br>2787 W Bullard Ave #101, Fresno, CA 93711
+            </small></p>
+            <table class="spacer"><tbody><tr><td height="10px" style="font-size:10px;line-height:10px;">&#xA0;</td></tr></tbody></table> 
+            <center data-parsed="">
+                  <img width="40" class="float-center np-logo" src="https://northpointemail.s3.amazonaws.com/logo/the-n.png" align="center">
+            </center>
+              </th>
+<th class="expander"></th></tr></table></th></tr></tbody></table>
+              <!-- Modify UnsubscribeOption via Admin Tools / Communications / Communication Mediums  -->
+              <p class="text-center"><small>[[ UnsubscribeOption ]]</small></p>
+            <table class="spacer"><tbody><tr><td height="30px" style="font-size:30px;line-height:30px;">&#xA0;</td></tr></tbody></table> 
+            </td></tr></tbody></table>
+            
+            
+          </center>
+        </td>
+      </tr>
+    </table>
+    <!-- prevent Gmail on iOS font size manipulation -->
+   <div style="display:none; white-space:nowrap; font:15px courier; line-height:0;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </div>
+  </body>
+</html>

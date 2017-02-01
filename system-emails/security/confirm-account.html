@@ -1,0 +1,72 @@
+
+<!doctype html><html lang="en"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <link rel="stylesheet" type="text/css" href="../../css/app.css">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Welcome to your NorthPointe Account</title>
+    <!-- <style> -->
+  </head>
+  <body>
+    <span class="preheader"></span>
+    <table class="body" cellpadding="0" cellspacing="0" width="100%" border="0">
+      <tr>
+        <td class="center" align="center" valign="top">
+          <center data-parsed="">
+            
+            <span class="preheader float-center" align="center">Welcome to your {{ 'Global' | Attribute:'OrganizationName' }} Account</span>
+            
+            <table align="center" class="container radius float-center"><tbody><tr><td>
+              <table class="row logo"><tbody><tr>
+                <th class="small-12 large-12 columns first last"><table><tr><th>
+                  <img alt="NorthPointe Community Church" class="logo-img" src="https://northpointemail.s3.amazonaws.com/logo/northpointelogov1.png" width="239" height="45">
+                </th>
+<th class="expander"></th></tr></table></th>
+              </tr></tbody></table>
+              
+              <table class="row"><tbody><tr>
+                <th class="inner small-12 large-12 columns first last"><table><tr><th>
+            
+                  {{ Person.FirstName }},<br><br>
+            
+                  Thank you for creating an account at {{ 'Global' | Attribute:'OrganizationName' }}. Please <a href="{{ ConfirmAccountUrl }}?cc={{ User.ConfirmationCodeEncoded }}&action=confirm">confirm</a> that you are the owner of this email address.<br><br>If you did not create this account, you can <a href="{{ ConfirmAccountUrl }}?cc={{ User.ConfirmationCodeEncoded }}&action=delete">Delete It</a>.<br><br>If the above links do not work, you can also go to {{ ConfirmAccountUrl }} and enter the following confirmation code:<br>{{ User.ConfirmationCode }}<br><br>
+            
+                  Thank you,<br>
+                  {{ 'Global' | Attribute:'OrganizationName' }}
+            
+                </th>
+<th class="expander"></th></tr></table></th>
+              </tr></tbody></table>
+            <table class="spacer"><tbody><tr><td height="23px" style="font-size:23px;line-height:23px;">&#xA0;</td></tr></tbody></table> 
+            </td></tr></tbody></table>
+            
+            <table align="center" class="container footer float-center"><tbody><tr><td>
+              <table class="spacer"><tbody><tr><td height="10px" style="font-size:10px;line-height:10px;">&#xA0;</td></tr></tbody></table> 
+              <table class="row"><tbody><tr>
+                <th class="small-12 large-12 columns first last"><table><tr><th>
+                  <p class="text-center"><small>Sent with &hearts; from
+                    <a class="quiet" href="https://www.northpointe.org/">
+                      NorthPointe
+                    </a>
+                    <br>2787 W Bullard Ave #101, Fresno, CA 93711
+            </small></p>
+            <table class="spacer"><tbody><tr><td height="10px" style="font-size:10px;line-height:10px;">&#xA0;</td></tr></tbody></table> 
+            <center data-parsed="">
+                  <img width="40" class="float-center np-logo" src="https://northpointemail.s3.amazonaws.com/logo/the-n.png" align="center">
+            </center>
+              </th>
+<th class="expander"></th></tr></table></th></tr></tbody></table>
+              <!-- Modify UnsubscribeOption via Admin Tools / Communications / Communication Mediums  -->
+              <p class="text-center"><small>[[ UnsubscribeOption ]]</small></p>
+            <table class="spacer"><tbody><tr><td height="30px" style="font-size:30px;line-height:30px;">&#xA0;</td></tr></tbody></table> 
+            </td></tr></tbody></table>
+            
+            
+          </center>
+        </td>
+      </tr>
+    </table>
+    <!-- prevent Gmail on iOS font size manipulation -->
+   <div style="display:none; white-space:nowrap; font:15px courier; line-height:0;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </div>
+  </body>
+</html>

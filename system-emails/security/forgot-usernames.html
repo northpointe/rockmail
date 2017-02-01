@@ -1,0 +1,121 @@
+
+<!doctype html><html lang="en"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <link rel="stylesheet" type="text/css" href="../../css/app.css">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Forgot your username or password?</title>
+    <!-- <style> -->
+  </head>
+  <body>
+    <span class="preheader"></span>
+    <table class="body" cellpadding="0" cellspacing="0" width="100%" border="0">
+      <tr>
+        <td class="center" align="center" valign="top">
+          <center data-parsed="">
+            
+            <span class="preheader float-center" align="center">Data update for {{ FirstName }} {{ LastName }}</span>
+            
+            <table align="center" class="container radius float-center"><tbody><tr><td>
+              <table class="row logo"><tbody><tr>
+                <th class="small-12 large-12 columns first last"><table><tr><th>
+                  <img alt="NorthPointe Community Church" class="logo-img" src="https://northpointemail.s3.amazonaws.com/logo/northpointelogov1.png" width="239" height="45">
+                </th>
+<th class="expander"></th></tr></table></th>
+              </tr></tbody></table>
+              
+              <table class="row"><tbody><tr>
+                <th class="inner small-12 large-12 columns first last"><table><tr><th>
+            <h1>Forgot your username or password?<br><small>Let&#8217;s get you a new one.</small></h1>
+            
+            {% assign people_count = Results | size %}
+            {% if people_count == 1 %}
+              {% for Result in Results %}
+                <p class="lead">Hi {{ Result.Person.NickName }} {{ Result.Person.LastName }},</p>
+                You recently requested to reset your password for your NorthPointe Account. Use the button below to reset it.
+                <strong>This password reset is only valid for the next 24 hours.</strong>
+                {% assign user_count = Result.Users | size %}
+                {% if user_count == 1 %}
+                  {% for User in Result.Users %}
+                    <br><br>Your username is <span class="emp">{{ User.UserName }}</span>
+                    <table class="spacer"><tbody><tr><td height="16px" style="font-size:16px;line-height:16px;">&#xA0;</td></tr></tbody></table> 
+                    <center data-parsed="">
+                      <table class="button rounded large float-center"><tr><td><table><tr><td><a href="{{ ConfirmAccountUrl }}?cc={{ User.ConfirmationCodeEncoded }}&action=reset">Reset Password</a></td></tr></table></td></tr></table>
+                    </center>
+                    <table class="spacer"><tbody><tr><td height="16px" style="font-size:16px;line-height:16px;">&#xA0;</td></tr></tbody></table> 
+                    <div itemscope="" itemtype="http://schema.org/EmailMessage">
+                      <div itemprop="potentialAction" itemscope="" itemtype="http://schema.org/ViewAction">
+                        <link itemprop="target" href="{{ ConfirmAccountUrl }}?cc={{ User.ConfirmationCodeEncoded }}&action=reset">
+                        <meta itemprop="name" content="Reset Your Password">
+                      </div>
+                      <meta itemprop="description" content="Visit our site to reset your password.">
+                    </div>
+                  {% endfor %}
+                {% else %}
+                  You have multiple usernames assigned to this account
+                  {% for User in Result.Users %}
+                    <span class="emp">{{ User.UserName }}</span>
+                    <table class="spacer"><tbody><tr><td height="16px" style="font-size:16px;line-height:16px;">&#xA0;</td></tr></tbody></table> 
+                    <center data-parsed="">
+                      <table class="button rounded large float-center"><tr><td><table><tr><td><a href="{{ ConfirmAccountUrl }}?cc={{ User.ConfirmationCodeEncoded }}&action=reset">Reset Password</a></td></tr></table></td></tr></table>
+                    </center>
+                    <table class="spacer"><tbody><tr><td height="16px" style="font-size:16px;line-height:16px;">&#xA0;</td></tr></tbody></table> 
+                  {% endfor %}
+                {% end %}
+              {% endfor %}
+            <p></p>
+            {% else %}
+              <p class="lead">Looks like a few people share this email account. If that doesn&#8217;t sound right email <a class="emp" href="mailto:{{ 'Global' | Attribute:'OrganizationEmail' }}">{{ 'Global' | Attribute:'OrganizationEmail' }}</a></p>
+            
+                {% for Result in Results %}
+                  {% for User in Result.Users %}
+                  <p><strong>{{ Result.Person.NickName }} {{ Result.Person.LastName }} Username:</strong> <span class="emp">{{ User.UserName }}</span></p>
+            
+                                     <table class="button rounded"><tr><td><table><tr><td><a href="{{ ConfirmAccountUrl }}?cc={{ User.ConfirmationCodeEncoded }}&action=reset">Reset Password</a></td></tr></table></td></tr></table>
+                                   <table class="spacer"><tbody><tr><td height="16px" style="font-size:16px;line-height:16px;">&#xA0;</td></tr></tbody></table> 
+                  {% endfor %}
+                {% endfor %}
+            
+            {% end %}
+            
+            
+            <p>If you did not request a password reset, please ignore this email or <a href="mailto:{{ 'Global' | Attribute:'OrganizationEmail' }}?subject=Password%20Reset%20Trouble">contact support</a> if you have questions.</p>
+            <p>Thanks,<br>{{ 'Global' | Attribute:'OrganizationName' }}</p>
+            
+            
+            </th>
+<th class="expander"></th></tr></table></th>
+            </tr></tbody></table>
+            <table class="spacer"><tbody><tr><td height="23px" style="font-size:23px;line-height:23px;">&#xA0;</td></tr></tbody></table> 
+            </td></tr></tbody></table>
+            
+            <table align="center" class="container footer float-center"><tbody><tr><td>
+              <table class="spacer"><tbody><tr><td height="10px" style="font-size:10px;line-height:10px;">&#xA0;</td></tr></tbody></table> 
+              <table class="row"><tbody><tr>
+                <th class="small-12 large-12 columns first last"><table><tr><th>
+                  <p class="text-center"><small>Sent with &hearts; from
+                    <a class="quiet" href="https://www.northpointe.org/">
+                      NorthPointe
+                    </a>
+                    <br>2787 W Bullard Ave #101, Fresno, CA 93711
+            </small></p>
+            <table class="spacer"><tbody><tr><td height="10px" style="font-size:10px;line-height:10px;">&#xA0;</td></tr></tbody></table> 
+            <center data-parsed="">
+                  <img width="40" class="float-center np-logo" src="https://northpointemail.s3.amazonaws.com/logo/the-n.png" align="center">
+            </center>
+              </th>
+<th class="expander"></th></tr></table></th></tr></tbody></table>
+              <!-- Modify UnsubscribeOption via Admin Tools / Communications / Communication Mediums  -->
+              <p class="text-center"><small>[[ UnsubscribeOption ]]</small></p>
+            <table class="spacer"><tbody><tr><td height="30px" style="font-size:30px;line-height:30px;">&#xA0;</td></tr></tbody></table> 
+            </td></tr></tbody></table>
+            
+            
+          </center>
+        </td>
+      </tr>
+    </table>
+    <!-- prevent Gmail on iOS font size manipulation -->
+   <div style="display:none; white-space:nowrap; font:15px courier; line-height:0;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </div>
+  </body>
+</html>
