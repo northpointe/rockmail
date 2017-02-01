@@ -12,6 +12,7 @@ import path     from 'path';
 import merge    from 'merge-stream';
 import beep     from 'beepbeep';
 import colors   from 'colors';
+import ghPages  from 'gulp-gh-pages';
 
 const $ = plugins();
 
@@ -21,6 +22,10 @@ const EMAIL = yargs.argv.to;
 
 // Declar var so that both AWS and Litmus task can use it.
 var CONFIG;
+
+// Deploy to GitHub (Should pass --production flag in future release)
+gulp.task('deploy',
+  gulp.series(clean, pages, sass, images, inline, deploy));
 
 // Build the "dist" folder by running all of the above tasks
 gulp.task('build',
@@ -46,6 +51,12 @@ gulp.task('zip',
 // This happens every time a build starts
 function clean(done) {
   rimraf('dist', done);
+}
+
+// Send to GitHub Pages
+function deploy() {
+  return gulp.src('./dist/**/*')
+    .pipe(ghPages());
 }
 
 // Compile layouts, pages, and partials into flat HTML files
