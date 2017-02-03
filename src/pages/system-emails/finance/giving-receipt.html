@@ -1,11 +1,11 @@
 ---
-subject: Giving Receipt from {{ GlobalAttribute.OrganizationName}}
+subject: Giving Receipt from {{ 'Global' | Attribute:'OrganizationName' }}
 ---
 
 <span class="preheader">Thank you for your gift of \{{ 'Global' | Attribute:'CurrencySymbol' }}\{{ amount.Amount | Format:'#,##0.00' }} to \{{ 'Global' | Attribute:'OrganizationName' }}</span>
 
 <container class="radius">
-  {{> nplogo }}
+  {{> logo }}
   <row>
     <columns class="inner">
       <h2>Gift of \{{ 'Global' | Attribute:'CurrencySymbol' }}\{{ amount.Amount | Format:'#,##0.00' }} to \{{ 'Global' | Attribute:'OrganizationName' }} successful (#\{{ TransactionCode }})</h2>
@@ -23,7 +23,7 @@ subject: Giving Receipt from {{ GlobalAttribute.OrganizationName}}
 {% if Person.Users | Size > 0 %}<a href="\{{ 'Global' | Attribute:'PublicApplicationRoot' }}/profile">sign in</a> to your NorthPointe Profile{% else -%} create a <a href="\{{ 'Global' | Attribute:'PublicApplicationRoot' }}/profile">\{{ 'Global' | Attribute:'OrganizationAbbreviation' }} Profile.</a>{% endif %}
 
 
-If you have any questions please call our Finance Team at (559) 276-2300 or e-mail us at <a href="mailto:giving@northpointe.org">giving@northpointe.org</a> and we will be happy to assist you!
+If you have any questions please call our Finance Team at {{ rockmail_orgphone }} or email us at <a href="mailto:{{ rockmail_givingemail }}">{{ rockmail_givingemail }}</a> and we will be happy to assist you!
         </p>
 
     </columns>

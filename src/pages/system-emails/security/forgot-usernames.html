@@ -5,7 +5,7 @@ subject: Forgot your username or password?
 <span class="preheader">Data update for \{{ FirstName }} \{{ LastName }}</span>
 
 <container class="radius">
-  {{> nplogo }}
+  {{> logo }}
   <row>
     <columns class="inner">
 <h1>Forgot your username or password?<br/><small>Let&#8217;s get you a new one.</small></h1>
@@ -14,7 +14,7 @@ subject: Forgot your username or password?
 {% if people_count == 1 %}
   {% for Result in Results %}
     <p class="lead">Hi \{{ Result.Person.NickName }} \{{ Result.Person.LastName }},</p>
-    You recently requested to reset your password for your NorthPointe Account. Use the button below to reset it.
+    You recently requested to reset your password for your {{ rockmail_orgabbr }} Account. Use the button below to reset it.
     <strong>This password reset is only valid for the next 24 hours.</strong>
     {% assign user_count = Result.Users | size %}
     {% if user_count == 1 %}

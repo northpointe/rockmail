@@ -5,14 +5,14 @@ description: Thank you for your continued support of {{ 'Global' | Attribute:'Or
 <span class="preheader"></span>
 {% assign StatementYear = 'Now' | Date:'yyyy' | Minus:1 %}
 <container class="radius">
-  {{> nplogo }}
+  {{> logo }}
   <row>
     <columns class="inner">
       <p>Dear \{{ Person.NickName }}, </p>
 
       <p>Your \{{ StatementYear }} Contribution Statement is now available <a href="\{{ 'Global' | Attribute:'PublicApplicationRoot' }}page/444?StatementYear=\{{ StatementYear }}&\{{ Person.ImpersonationParameter }}">online here</a>.</p>
 
-      <p>If you have any questions regarding your contribution statement or feel corrections are needed, email <a href="mailto:cheriblackwell@northpointe.org">Cheri Blackwell</a> or call us at (559) 276-2300.</p>
+      <p>If you have any questions regarding your contribution statement or feel corrections are needed, email <a href="mailto:{{ rockmail_givingemail }}">{{ rockmail_givingemail }}</a> or call us at {{ rockmail_orgphone }}.</p>
 
       <p>&nbsp;<br>Thank You,<br>&nbsp;</p>
       <p>Cheri Blackwell<br>
