@@ -13,7 +13,13 @@
       <img width="40" class="float-center np-logo" src="https://northpointemail.s3.amazonaws.com/logo/the-n.png" />
 </center>
   </row>
-  <!-- Modify UnsubscribeOption via Admin Tools / Communications / Communication Mediums  -->
-  <p class="text-center"><small>[[ UnsubscribeOption ]]</small></p>
+  {{!-- Modify UnsubscribeOption via Admin Tools Communications > Communication Mediums --}}
+  <!-- [[ UnsubscribeOption ]] -->
+  {{!-- Leave tag to bypass unsubscribe tag insertion at end of email --}}
+  {% if UnsubscribeOption != "" %}
+  <p class="text-center"><small>
+    <a style="color:#cacaca;text-decoration:underline;" href="\{{ 'Global' | Attribute:'PublicApplicationRoot' }}Unsubscribe/\{{ Person | Property:'UrlEncodedKey' }}">Unsubscribe</a>
+  </small></p>
+  {% endif %}
 <spacer size="30"></spacer>
 </container>
