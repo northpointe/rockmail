@@ -1,0 +1,28 @@
+---
+subject: Connection Request
+---
+
+{%- assign connection = Workflow | Attribute:"ConnectionRequest","Object" -%}
+<container class="radius">
+  {{> logo }}
+  <row>
+    <columns class="inner">
+      <h2>\{{ connection.ConnectionOpportunity.Name }} Connection</h2>
+      <p>&nbsp;You have a new connection request for </br>
+        <a href="\{{ 'Global' | Attribute:'PublicApplicationRoot' }}/person/\{{ connection.PersonAlias.Person.Id }}">\{{ connection.PersonAlias.Person.FullName }}</a>
+      </p>
+      <p><strong>Comments</strong><br/>
+        \{{ connection.Comments | NewlineToBr }}
+      </p>
+      
+      <spacer size="16"></spacer>
+      <center>
+        <button class="rounded large" href="\{{ 'Global' | Attribute:'PublicApplicationRoot' }}page/408?ConnectionRequestId=\{{ connection.Id }}&ConnectionOpportunityId=\{{ connection.ConnectionOpportunity.Id }}">View Request</button>
+      </center>
+      <spacer size="16"></spacer>
+      <p>Made the connection?</p>
+      <p><a href="\{{ 'Global' | Attribute:'PublicApplicationRoot' }}MyWorkflowEntry/58?WorkflowId=\{{ Workflow.Id }}">Close This Request</a></p>
+    </columns>
+  </row>
+</container>
+{{> footer }}
