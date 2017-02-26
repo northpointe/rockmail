@@ -1,0 +1,31 @@
+---
+subject: NP Kids Parent Child Dedication Confirmation
+description: You have successfully registered for the Parent Child Dedication.
+---
+<container class="radius">
+  {{> npklogo }}
+  <row>
+    <columns class="inner">
+      {% capture currencySymbol %}\{{ 'Global' | Attribute:'CurrencySymbol' }}{% endcapture %}
+      {% capture externalSite %}\{{ 'Global' | Attribute:'PublicApplicationRoot' }}{% endcapture %}
+      {% assign registrantCount = Registration.Registrants | Size %}
+      {% assign children = Registration.Registrants %}
+
+      <p>\{{ Registration.FirstName }},</p>
+      <p>
+          \{{ RegistrationInstance.AdditionalReminderDetails | NewlineToBr }}
+      </p>
+
+      <p>{% if registrantCount > 1 %}\{{ children | Map:'FullName' | Join:', ' | ReplaceLast:',',' and' }} have{% else %}\{{ children | Map:'FullName' | Join:'' }} has{% endif %} been successfully registered
+        for \{{ RegistrationInstance.Name }}.
+      </p>
+
+      <p>
+          If you have any questions please contact \{{ RegistrationInstance.ContactName }} at \{{ RegistrationInstance.ContactEmail }}.
+      </p>
+
+    </columns>
+  </row>
+</container>
+
+{{> footer }}
