@@ -1,6 +1,6 @@
 ---
 subject: Event Confirmation Email
-description: \{%- for registrant in Registration.Registrants -%}{{ registrant.PersonAlias.Person.FullName }} {% endfor -%} is registered for \{{ RegistrationInstance.Name }}
+description: \{%- for registrant in Registration.Registrants -%}{{ registrant.PersonAlias.Person.FullName }} {% endfor -%} {% if registrantCount > 1 %}are{% else %}is{% endif %} registered for {{ RegistrationInstance.Name }}
 ---
 
 <container class="radius">
